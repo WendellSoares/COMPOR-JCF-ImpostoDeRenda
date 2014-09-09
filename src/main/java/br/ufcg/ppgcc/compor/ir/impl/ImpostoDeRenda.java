@@ -1,7 +1,9 @@
 package br.ufcg.ppgcc.compor.ir.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import br.ufcg.ppgcc.compor.ir.ExcecaoImpostoDeRenda;
 import br.ufcg.ppgcc.compor.ir.FachadaExperimento;
@@ -12,6 +14,7 @@ public class ImpostoDeRenda implements FachadaExperimento{
 	
 	List<FontePagadora> fontesSalvas = new ArrayList<FontePagadora>();
 	List<Titular> titulares = new ArrayList<Titular>();
+	Map<Titular, List<FontePagadora>> mapaTitulares = new HashMap<Titular, List<FontePagadora>>();
 	
 	public void criarNovoTitular(Titular titular){
 		
@@ -25,22 +28,24 @@ public class ImpostoDeRenda implements FachadaExperimento{
 			throw new ExcecaoImpostoDeRenda("O campo CPF está inválido");
 		}
 		titulares.add(titular); 
-	
 	}
 	
 	public List<Titular> listarTitulares() {
-		
 		return titulares;
 	}
 
 
 	public void criarFontePagadora(Titular titular, FontePagadora fonte) {
 		fontesSalvas.add(fonte);
+		addNoMapaDeFontesPagadoras(titular, fontesSalvas);
 	}
 
 
 	public List<FontePagadora> listarFontes(Titular titular) {
 		return fontesSalvas;
+	}
+	public void addNoMapaDeFontesPagadoras(Titular titular, List<FontePagadora> fontesPagadoras){
+		mapaTitulares.put(titular, fontesSalvas);
 	}
       
 }
