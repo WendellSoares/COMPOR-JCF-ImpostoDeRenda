@@ -12,6 +12,7 @@ public class ImpostoDeRenda implements FachadaExperimento{
 	
 	List<FontePagadora> fontesSalvas = new ArrayList<FontePagadora>();
 	List<Titular> titulares = new ArrayList<Titular>();
+	
 	public void criarNovoTitular(Titular titular){
 		
 		
@@ -27,7 +28,6 @@ public class ImpostoDeRenda implements FachadaExperimento{
 	
 	}
 	
-
 	public List<Titular> listarTitulares() {
 		
 		return titulares;
