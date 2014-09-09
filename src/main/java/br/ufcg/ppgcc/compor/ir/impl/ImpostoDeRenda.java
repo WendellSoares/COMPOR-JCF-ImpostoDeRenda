@@ -5,10 +5,12 @@ import java.util.List;
 
 import br.ufcg.ppgcc.compor.ir.ExcecaoImpostoDeRenda;
 import br.ufcg.ppgcc.compor.ir.FachadaExperimento;
+import br.ufcg.ppgcc.compor.ir.FontePagadora;
 import br.ufcg.ppgcc.compor.ir.Titular;
 
 public class ImpostoDeRenda implements FachadaExperimento{
 	
+	List<FontePagadora> fontesSalvas = new ArrayList<FontePagadora>();
 	List<Titular> titulares = new ArrayList<Titular>();
 	public void criarNovoTitular(Titular titular){
 		
@@ -29,6 +31,16 @@ public class ImpostoDeRenda implements FachadaExperimento{
 	public List<Titular> listarTitulares() {
 		
 		return titulares;
+	}
+
+
+	public void criarFontePagadora(Titular titular, FontePagadora fonte) {
+		fontesSalvas.add(fonte);
+	}
+
+
+	public List<FontePagadora> listarFontes(Titular titular) {
+		return fontesSalvas;
 	}
       
 }
