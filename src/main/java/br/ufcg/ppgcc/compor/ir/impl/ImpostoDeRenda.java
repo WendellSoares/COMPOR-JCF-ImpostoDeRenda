@@ -12,10 +12,16 @@ public class ImpostoDeRenda implements FachadaExperimento{
 	List<Titular> titulares = new ArrayList<Titular>();
 	public void criarNovoTitular(Titular titular){
 		
-		titulares.add(titular); 
-		if (titular.getNome() == null || titular.getCpf() == null){
-			throw new ExcecaoImpostoDeRenda();
+		
+		if (titular.getNome() == null){
+			throw new ExcecaoImpostoDeRenda("O campo nome é obrigatório");
+		}else if (titular.getCpf() == null){
+			throw new ExcecaoImpostoDeRenda("O campo CPF está inválido");
+
+		}else if (titular.getCpf().length() != 14){
+			throw new ExcecaoImpostoDeRenda("O campo CPF está inválido");
 		}
+		titulares.add(titular); 
 	
 	}
 	
